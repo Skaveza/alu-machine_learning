@@ -17,5 +17,5 @@ plt.ylim(0,1)
 plt.plot(x,y1, linestyle="dashed", c="red", label="C-14")
 plt.plot(x,y2, c="green", label="Ra-226")
 
-plt.show
+plt.show()
 

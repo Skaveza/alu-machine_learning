@@ -6,5 +6,5 @@ y = np.arange(0, 11) ** 3
 x = np.arange(0,11)
 plt.plot (y, c="red")
 
-plt.show
+plt.show()
 

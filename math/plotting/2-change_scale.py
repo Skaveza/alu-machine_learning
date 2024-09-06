@@ -14,4 +14,4 @@ plt.yscale('log')
 plt.xlim(0,28650)
 plt.plot(x,y, c="blue")
 
-plt.show
+plt.show()
