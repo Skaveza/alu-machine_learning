@@ -16,6 +16,7 @@ plt.xlim(0,20000)
 plt.ylim(0,1)
 plt.plot(x,y1, linestyle="dashed", c="red", label="C-14")
 plt.plot(x,y2, c="green", label="Ra-226")
+plt.legend()
 
 plt.show()
 
