@@ -10,9 +10,16 @@ print(matrix_shape(mat2))
 """
 
 def matrix_shape(matrix):
+  """ Calculates the shape of a matrix
   
-  shape = []
-  while isinstance(matrix, list):
-    shape.append(len(matrix))
-    matrix = matrix[0]
-    return shape
+  Args:
+     matrix: The matrix to calculate the shape of.
+     
+  Returns:
+     A tuple containing the number of rows and columns in the matrix.
+    """
+  
+  num_rows = len(matrix)
+  num_cols = len(matrix[0])
+  
+  return num_rows, num_cols
