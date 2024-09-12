@@ -9,6 +9,7 @@ print(arr1)
 print(arr2)
 """
 
+
 def cat_arrays(arr1, arr2):
     """Concatenates two arrays.
 
