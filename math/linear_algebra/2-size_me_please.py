@@ -19,7 +19,7 @@ def matrix_shape(matrix):
     Returns:
         A list containing the shape of the matrix in each dimension.
 """
-  
+
     shape = []
     while isinstance(matrix, list):
         shape.append(len(matrix))
