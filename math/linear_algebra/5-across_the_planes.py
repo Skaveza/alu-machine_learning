@@ -10,6 +10,7 @@ print(mat2)
 print(add_matrices2D(mat1, [[1, 2, 3], [4, 5, 6]]))
 """
 
+
 def add_matrices2D(mat1, mat2):
     """Adds two 2D matrices element-wise.
 
@@ -23,9 +24,9 @@ def add_matrices2D(mat1, mat2):
     """
     if len(mat1) != len(mat2):
         return None
-    
+
     for row1, row2 in zip(mat1, mat2):
         if len(row1) != len(row2):
             return None
-    
+
     return [[row1[i] + row2[i] for i in range(len(row1))] for row1, row2 in zip(mat1, mat2)]
