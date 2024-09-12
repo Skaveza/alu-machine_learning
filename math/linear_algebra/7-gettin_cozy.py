@@ -25,10 +25,9 @@ def cat_matrices2D(mat1, mat2, axis=0):
         mat2: A 2D list (matrix) of integers or floats.
         axis: The axis along which to concatenate the matrices. 
               axis=0 means row-wise, axis=1 means column-wise.
-              
+          
     Returns:
-        A new 2D list that is the concatenation of mat1 and mat2 along the given axis.
-        If the matrices cannot be concatenated, returns None.
+       If the matrices cannot be concatenated, returns None.
     """
     if axis == 0:
         if len(mat1[0]) != len(mat2[0]):
