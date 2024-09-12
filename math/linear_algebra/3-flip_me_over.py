@@ -13,14 +13,13 @@ print(matrix_transpose(mat2))
 
 
 def matrix_transpose(matrix):
-  """Transposes a matrix.
+    """Transposes a matrix.
+    
+    Args:
+        matrix: A 2D list (matrix) to transpose.
+    
+    Returns:
+        A new transposed matrix where the rows and columns are swapped.
+    """
+    return [[row[i] for row in matrix] for i in range(len(matrix[0]))]
   
-  Args:
-  matrix: A 2D list (matrix) to transpose.
-  
-  Returns:
-  A new transposed matrix where the rows and columns are swapped.
-  """
-
-  return [[row[i] for row in matrix] for i in range(len(matrix[0]))]
- 
