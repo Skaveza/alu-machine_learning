@@ -9,6 +9,7 @@ mat2 = [[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15]],
 print(matrix_shape(mat2))
 """
 
+
 def matrix_shape(matrix):
     """Calculates the shape of a matrix.
 
@@ -17,8 +18,8 @@ def matrix_shape(matrix):
 
     Returns:
         A list containing the shape of the matrix in each dimension.
-    """
-    
+"""
+  
     shape = []
     while isinstance(matrix, list):
         shape.append(len(matrix))
