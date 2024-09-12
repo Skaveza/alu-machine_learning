@@ -22,4 +22,3 @@ def matrix_transpose(matrix):
         A new transposed matrix where the rows and columns are swapped.
     """
     return [[row[i] for row in matrix] for i in range(len(matrix[0]))]
-  
