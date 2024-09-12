@@ -24,4 +24,3 @@ def matrix_shape(matrix):
         shape.append(len(matrix))
         matrix = matrix[0]  # Move one level deeper into the matrix
     return shape  # Return the shape after calculating all dimensions
-
