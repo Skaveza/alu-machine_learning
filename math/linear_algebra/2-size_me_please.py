@@ -16,10 +16,11 @@ def matrix_shape(matrix):
      matrix: The matrix to calculate the shape of.
      
   Returns:
-     A tuple containing the number of rows and columns in the matrix.
+     A list containing the shape of the matrix in each dimension.
     """
   
-  num_rows = len(matrix)
-  num_cols = len(matrix[0])
-  
-  return num_rows, num_cols
+  shape = []
+  while isinstance(matrix, list):
+    shape.append(len(matrix))
+    matrix = matrix[0]
+    return shape
