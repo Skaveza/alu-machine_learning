@@ -23,7 +23,7 @@ def cat_matrices2D(mat1, mat2, axis=0):
     Args:
         mat1: A 2D list (matrix) of integers or floats.
         mat2: A 2D list (matrix) of integers or floats.
-        axis: The axis along which to concatenate the matrices. 
+        axis: The axis along which to concatenate the matrices.
         axis=0 means row-wise, axis=1 means column-wise.
 
     Returns:
