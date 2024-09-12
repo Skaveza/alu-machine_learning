@@ -10,13 +10,18 @@ print(arr2)
 print(add_arrays(arr1, [1, 2, 3]))
 """
 
-def matrix_transpose(matrix):
-    """Transposes a matrix.
-  
+def add_arrays(arr1, arr2):
+    """Adds two arrays element-wise.
+ 
     Args:
-        matrix: A 2D list (matrix) to transpose.
-  
+        arr1: A list of integers or floats.
+        arr2: A list of integers or floats.
+ 
     Returns:
-        A new transposed matrix where the rows and columns are swapped.
+        A new list with the element-wise sum of arr1 and arr2.
+        If arr1 and arr2 are not the same shape, returns None.
     """
-    return [[row[i] for row in matrix] for i in range(len(matrix[0]))]
+    if len(arr1) != len(arr2):
+        return None  # Return None if arrays are not the same length
+    
+    return [arr1[i] + arr2[i] for i in range(len(arr1))]
