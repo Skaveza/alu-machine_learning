@@ -12,6 +12,6 @@ def np_matmul(mat1, mat2):
         mat2: A NumPy array.
 
     Returns:
-        A new NumPy array resulting from the matrix multiplication of mat1 and mat2.
+        Result from the matrix multiplication of mat1 and mat2.
     """
     return np.matmul(mat1, mat2)
