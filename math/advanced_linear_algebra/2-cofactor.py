@@ -6,6 +6,7 @@ This module calculates the cofactor of a matrix.
 
 det = __import__('determinant').determinant
 
+
 def cofactor(matrix):
     """
     Calculates the cofactor matrix of a matrix.
