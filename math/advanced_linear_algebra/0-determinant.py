@@ -1,49 +1,44 @@
 #!/usr/bin/env python3
-"""This module calculates the determinant of a matrix"""
+"""
+This function calculates the determinant of a matrix.
+"""
+
 
 def determinant(matrix):
-    """Calculates the determinant of a matrix.
-  
-    Args:
-        matrix (list): A list whose determinant should be calculated.
-   
-    Returns:
-        int or float: The determinant of the matrix.
+    """
+    Calculates the determinant of a matrix.
 
+    Args:
+        matrix (list): A list of lists whose determinant should be calculated.
+    Returns:
+        int: The determinant of the matrix.
     Raises:
         TypeError: If matrix is not a list of lists.
         ValueError: If matrix is not a square matrix.
-
-    Example:
-        >>> determinant([[1, 2], [3, 4]])
-        -2
-  
-        >>> determinant([[5]])
-        5
     """
 
-    if not isinstance(matrix, list) or any(not isinstance(row, list) for row in matrix):
+
+    if not isinstance(matrix, list) or not all(
+            isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a list of lists")
 
-    if matrix == [[]]:
+    num_rows = len(matrix)
+    num_cols = len(matrix[0])
+
+    if num_rows == 0 or num_cols == 0:
         return 1
 
-    if any(
-        len(row) != len(matrix) for row in matrix
-    ):
+    if num_rows != num_cols:
         raise ValueError("matrix must be a square matrix")
 
-    if len(matrix) == 1:
+    if num_rows == 1:
         return matrix[0][0]
 
-    if len(matrix) == 2:
+    if num_rows == 2:
         return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
     det = 0
-    for col in range(len(matrix)):
-        sub_matrix = [
-            row[:col] + row[col+1:] for row in matrix[1:]
-        ]
-        det += ((-1) ** col) * matrix[0][col] * determinant(sub_matrix)
-
+    for j in range(num_rows):
+        det += ((-1) ** j) * matrix[0][j] * determinant(
+            [row[:j] + row[j + 1:] for row in matrix[1:]])
     return det
