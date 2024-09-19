@@ -2,6 +2,8 @@
 """
 This module calculates the minor matrix of a square matrix.
 """
+
+
 det = __import__('determinant').determinant
 
 def minor(matrix):
