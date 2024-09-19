@@ -6,6 +6,7 @@ This module calculates the adjugate matrix of a matrix.
 
 det = __import__('determinant').determinant
 
+
 def adjugate(matrix):
     """
     Calculates the adjugate matrix of a matrix.
