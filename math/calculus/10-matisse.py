@@ -10,9 +10,9 @@ def poly_derivative(poly):
   if len(poly) == 1:
     return [0]
 
-    derivative = []
-    for power, coef in enumerate(poly[1:], start=1):
-        derivative.append(coef * power)
+  derivative = []
+  for power, coef in enumerate(poly[1:], start=1):
+      derivative.append(coef * power)
 
-    return derivative if any (derivative) else [0]
+  return derivative if any (derivative) else [0]
   
