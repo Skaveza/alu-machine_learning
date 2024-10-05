@@ -51,4 +51,3 @@ def poly_integral(poly, C=0):
         integral = integral[:-1]
 
     return integral
-  
