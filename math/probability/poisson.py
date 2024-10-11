@@ -12,7 +12,6 @@ class Poisson:
         Parameters:
         data:A list of data points to estimate the distribution.
         lambtha:The expected number of occurrences in a given time frame
-
         If data is provided, lambtha is calculated as the mean of the data. 
         Otherwise, the provided lambtha is used
         Raises:
