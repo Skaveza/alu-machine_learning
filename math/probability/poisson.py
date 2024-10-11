@@ -18,7 +18,7 @@ class Poisson:
 
         Raises:
         TypeError: If data is not a list.
-        ValueError: If lambtha is not positive or if data has fewer 
+        ValueError: If lambtha is not positive or if data has fewer
         than two data points.
         """
         if lambtha <= 0:
