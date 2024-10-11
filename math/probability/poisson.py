@@ -15,7 +15,6 @@ class Poisson:
 
         If data is provided, lambtha is calculated as the mean of the data. 
         Otherwise, the provided lambtha is used
-
         Raises:
         TypeError:If data is not a list.
         ValueError:If lambtha is not positive or if data has fewer than two data points.
