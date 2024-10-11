@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
+"""This module illustrates Poison Distribution"""
+
 class Poisson:
-    def __init__(self, data=None, lambtha=1.):
+  """Represents Poisson Distribution"""
+  def __init__(self, data=None, lambtha=1.):
         # Check if lambtha is a positive value
         if lambtha <= 0:
             raise ValueError("lambtha must be a positive value")
-        
+
         # If data is provided, calculate lambtha from the data
         if data is None:
             # Use the provided lambtha if no data is given
