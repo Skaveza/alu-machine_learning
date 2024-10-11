@@ -1,23 +1,31 @@
 #!/usr/bin/env python3
-"""This module illustrates Poison Distribution"""
+"""This module illustrates Poisson Distribution."""
 
 class Poisson:
-  """Represents Poisson Distribution"""
-  def __init__(self, data=None, lambtha=1.):
-        # Check if lambtha is a positive value
+    """Represents a Poisson Distribution."""
+    
+    def __init__(self, data=None, lambtha=1.):
+        """
+        Initialize the Poisson distribution.
+
+        Parameters:
+        data (list): A list of data points to estimate the distribution.
+        lambtha (float): The expected number of occurrences in a given time frame (must be positive).
+
+        If data is provided, lambtha is calculated as the mean of the data. 
+        Otherwise, the provided lambtha is used (default is 1.0).
+
+        Raises:
+        TypeError: If data is not a list.
+        ValueError: If lambtha is not positive or if data has fewer than two data points.
+        """
         if lambtha <= 0:
             raise ValueError("lambtha must be a positive value")
-
-        # If data is provided, calculate lambtha from the data
         if data is None:
-            # Use the provided lambtha if no data is given
             self.lambtha = float(lambtha)
         else:
-            # Validate the data type
             if not isinstance(data, list):
                 raise TypeError("data must be a list")
-            # Check if data has at least two data points
             if len(data) < 2:
                 raise ValueError("data must contain multiple values")
-            # Calculate lambtha as the mean of the data
             self.lambtha = float(sum(data) / len(data))
