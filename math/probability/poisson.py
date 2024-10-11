@@ -10,7 +10,8 @@ class Poisson:
 
         Parameters:
         data (list): A list of data points to estimate the distribution.
-        lambtha (float): The expected number of occurrences in a given time frame (must be positive).
+        lambtha (float): The expected number of occurrences in a given time frame 
+                         (must be positive).
 
         If data is provided, lambtha is calculated as the mean of the data. 
         Otherwise, the provided lambtha is used (default is 1.0).
