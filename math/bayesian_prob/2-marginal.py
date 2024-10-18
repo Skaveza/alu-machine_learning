@@ -24,10 +24,10 @@ def likelihood(x, n, P):
 
     # Binomial coefficient
     binom_coeff = comb(n, x)
- 
+
     # Likelihood calculation for each probability in P
     likelihoods = binom_coeff * (P ** x) * ((1 - P) ** (n - x))
-  
+
     return likelihoods
 
 
@@ -54,13 +54,13 @@ def intersection(x, n, P, Pr):
         raise ValueError("All values in Pr must be in the range [0, 1]")
     if not np.isclose(np.sum(Pr), 1):
         raise ValueError("Pr must sum to 1")
-   
+
     # Likelihood calculation
     L = likelihood(x, n, P)
- 
+
     # Intersection (likelihood * prior for each probability)
     intersection_values = L * Pr
-   
+ 
     return intersection_values
 
 
@@ -73,7 +73,7 @@ def marginal(x, n, P, Pr):
     n (int): Total number of patients.
     P (numpy.ndarray): 1D array of probabilities of severe side effects.
     Pr (numpy.ndarray): 1D array of prior beliefs about P.
- 
+
     Returns:
     float: Marginal probability of obtaining x and n.
     """
