@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""Module calculates the correlation matrix"""
+
+
 import numpy as np
 
 

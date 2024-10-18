@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""Module calcualtes the mean and covariance of a data set"""
+
+
 import numpy as np
 
 

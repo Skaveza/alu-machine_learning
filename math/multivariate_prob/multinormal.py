@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Module for the MultiNormal class representing a Multivariate Normal distribution."""
+"""
+Module for the MultiNormal class representing a Multivariate Normal distribution.
+"""
+
 
 import numpy as np
 
@@ -35,4 +38,3 @@ class MultiNormal:
         # Calculate covariance
         centered_data = data - self.mean
         self.cov = np.dot(centered_data, centered_data.T) / (n - 1)
-
