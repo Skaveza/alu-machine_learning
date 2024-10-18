@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module for the MultiNormal class representing a Multivariate Normal distribution.
+Module for MultiNormal class representing a Multivariate Normal distribution.
 """
 
 
@@ -17,7 +17,7 @@ class MultiNormal:
         Initialize the MultiNormal distribution.
 
         Parameters:
-        data (numpy.ndarray): A 2D array of shape (d, n) containing the dataset,
+        data (numpy.ndarray): A 2D array of shape (d,n) containing the dataset,
                               where d is the number of dimensions and
                               n is the number of data points.
 
