@@ -60,7 +60,7 @@ def intersection(x, n, P, Pr):
 
     # Intersection (likelihood * prior for each probability)
     intersection_values = L * Pr
- 
+
     return intersection_values
 
 
