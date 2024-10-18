@@ -24,7 +24,7 @@ def likelihood(x, n, P):
 
     # Binomial coefficient
     binom_coeff = comb(n, x)
- 
+
     # Likelihood calculation for each probability in P
     likelihoods = binom_coeff * (P ** x) * ((1 - P) ** (n - x))
 
