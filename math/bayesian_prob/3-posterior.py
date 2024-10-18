@@ -24,14 +24,17 @@ def likelihood(x, n, P):
 
     # Binomial coefficient
     binom_coeff = comb(n, x)
-    
+  
     # Likelihood calculation for each probability in P
     likelihoods = binom_coeff * (P ** x) * ((1 - P) ** (n - x))
-   
+  
     return likelihoods
 
+
 def intersection(x, n, P, Pr):
-    """Calculate the intersection of obtaining the data with the various hypothetical probabilities."""
+    """
+    Calculate the intersection of obtaining the data with hypothetical probabilities
+    """
     if not isinstance(n, int) or n <= 0:
         raise ValueError("n must be a positive integer")
     if not isinstance(x, int) or x < 0:
@@ -50,14 +53,15 @@ def intersection(x, n, P, Pr):
         raise ValueError("All values in Pr must be in the range [0, 1]")
     if not np.isclose(np.sum(Pr), 1):
         raise ValueError("Pr must sum to 1")
-    
+ 
     # Likelihood calculation
     L = likelihood(x, n, P)
-   
+
     # Intersection (likelihood * prior for each probability)
     intersection_values = L * Pr
-    
+ 
     return intersection_values
+
 
 def marginal(x, n, P, Pr):
     """Calculate the marginal probability of obtaining the data."""
@@ -78,14 +82,15 @@ def marginal(x, n, P, Pr):
         raise ValueError("All values in Pr must be in the range [0, 1]")
     if not np.isclose(np.sum(Pr), 1):
         raise ValueError("Pr must sum to 1")
-    
+
     # Calculate intersection
     intersection_values = intersection(x, n, P, Pr)
-   
+
     # Marginal probability is the sum of intersection values
     marginal_prob = np.sum(intersection_values)
- 
+
     return marginal_prob
+
 
 def posterior(x, n, P, Pr):
     """
@@ -120,14 +125,14 @@ def posterior(x, n, P, Pr):
         raise ValueError("All values in Pr must be in the range [0, 1]")
     if not np.isclose(np.sum(Pr), 1):
         raise ValueError("Pr must sum to 1")
-  
+
     # Calculate likelihood for each probability in P
     L = likelihood(x, n, P)
-   
+  
     # Calculate marginal probability
     marginal_prob = marginal(x, n, P, Pr)
- 
-    # Posterior calculation using Bayes' theorem: Posterior = (Likelihood * Prior) / Marginal
+
+    # Posterior calculation
     posterior_probs = (L * Pr) / marginal_prob
 
     return posterior_probs
