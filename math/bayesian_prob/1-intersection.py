@@ -35,13 +35,13 @@ def intersection(x, n, P, Pr):
     """
     Calculate the intersection of obtaining the data with the various
     hypothetical probabilities.
-  
+
     Parameters:
     x (int): Number of patients with severe side effects.
     n (int): Total number of patients.
     P (numpy.ndarray): 1D array of probabilities of severe side effects.
     Pr (numpy.ndarray): 1D array of prior beliefs of P.
- 
+
     Returns:
     numpy.ndarray: Intersection of obtaining x and n with each probability in P
     """
