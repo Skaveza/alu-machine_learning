@@ -3,6 +3,7 @@
 Module for the MultiNormal class representing a Multivariate Normal distribution.
 """
 
+
 import numpy as np
 
 
@@ -37,35 +38,3 @@ class MultiNormal:
         # Calculate covariance
         centered_data = data - self.mean
         self.cov = np.dot(centered_data, centered_data.T) / (n - 1)
-
-    def pdf(self, x):
-        """
-        Calculate the Probability Density Function (PDF) at a data point.
-
-        Parameters:
-        x (numpy.ndarray): A 2D array of shape (d, 1) containing the data point,
-                           where d is the number of dimensions.
-
-        Returns:
-        float: The value of the PDF at the given point.
-
-        Raises:
-        TypeError: If x is not a numpy.ndarray.
-        ValueError: If x does not have the shape (d, 1).
-        """
-        d, _ = self.mean.shape
-
-        if not isinstance(x, np.ndarray):
-            raise TypeError("x must be a numpy.ndarray")
-
-        if x.shape != (d, 1):
-            raise ValueError(f"x must have the shape ({d}, 1)")
-
-        # Compute the PDF
-        det = np.linalg.det(self.cov)
-        inv_cov = np.linalg.inv(self.cov)
-        diff = x - self.mean
-        exponent = -0.5 * np.dot(np.dot(diff.T, inv_cov), diff)
-        coefficient = 1 / np.sqrt((2 * np.pi) ** d * det)
-
-        return float(coefficient * np.exp(exponent))
