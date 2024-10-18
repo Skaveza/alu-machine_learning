@@ -27,13 +27,13 @@ def likelihood(x, n, P):
  
     # Likelihood calculation for each probability in P
     likelihoods = binom_coeff * (P ** x) * ((1 - P) ** (n - x))
- 
+
     return likelihoods
 
 
 def intersection(x, n, P, Pr):
     """
-    Calculate the intersection of obtaining the data with hypothetical probabilities
+    Calculate the intersection of obtaining the data
     """
     if not isinstance(n, int) or n <= 0:
         raise ValueError("n must be a positive integer")
@@ -104,7 +104,7 @@ def posterior(x, n, P, Pr):
     Pr (numpy.ndarray): 1D array of prior beliefs about P.
 
     Returns:
-    numpy.ndarray: Posterior probabilities of each probability in P given x and n.
+    numpy.ndarray: Posterior probabilities of each value in P given x and n.
     """
     # Input validation (same as in the previous functions)
     if not isinstance(n, int) or n <= 0:
