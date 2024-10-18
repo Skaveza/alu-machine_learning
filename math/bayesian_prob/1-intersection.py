@@ -24,31 +24,34 @@ def likelihood(x, n, P):
 
     # Calculate binomial coefficient
     binom_coeff = comb(n, x)
-    
+
     # Calculate the likelihood for each probability in P
     likelihoods = binom_coeff * (P ** x) * ((1 - P) ** (n - x))
 
     return likelihoods
 
+
 def intersection(x, n, P, Pr):
     """
     Calculate the intersection of obtaining the data with the various
     hypothetical probabilities.
-    
+  
     Parameters:
     x (int): Number of patients with severe side effects.
     n (int): Total number of patients.
     P (numpy.ndarray): 1D array of probabilities of severe side effects.
     Pr (numpy.ndarray): 1D array of prior beliefs of P.
-    
+ 
     Returns:
-    numpy.ndarray: Intersection of obtaining x and n with each probability in P.
+    numpy.ndarray: Intersection of obtaining x and n with each probability in P
     """
     # Input validation
     if not isinstance(n, int) or n <= 0:
         raise ValueError("n must be a positive integer")
     if not isinstance(x, int) or x < 0:
-        raise ValueError("x must be >= 0")
+        raise ValueError(
+          "x must be an integer that is greater than or equal to 0"
+          )
     if x > n:
         raise ValueError("x cannot be greater than n")
     if not isinstance(P, np.ndarray) or P.ndim != 1:
@@ -61,7 +64,7 @@ def intersection(x, n, P, Pr):
         raise ValueError("All values in Pr must be in the range [0, 1]")
     if not np.isclose(np.sum(Pr), 1):
         raise ValueError("Pr must sum to 1")
-    
+
     # Calculate likelihoods using the previous function
     L = likelihood(x, n, P)
 
