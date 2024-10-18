@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Module for the MultiNormal class representing a Multivariate Normal distribution."""
+
 import numpy as np
 
 
@@ -27,9 +29,10 @@ class MultiNormal:
         if n < 2:
             raise ValueError("data must contain multiple data points")
 
-        """Calculate mean"""
+        # Calculate mean
         self.mean = np.mean(data, axis=1, keepdims=True)
 
-        """Calculate covariance"""
+        # Calculate covariance
         centered_data = data - self.mean
         self.cov = np.dot(centered_data, centered_data.T) / (n - 1)
+
