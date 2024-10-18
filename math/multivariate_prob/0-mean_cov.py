@@ -32,10 +32,10 @@ def mean_cov(X):
     if n < 2:
         raise ValueError("X must contain multiple data points")
 
-    # Calculate mean
+    """Calculate mean"""
     mean = np.mean(X, axis=0, keepdims=True)
 
-    # Calculate covariance
+    """Calculate covariance"""
     X_centered = X - mean
     cov = np.dot(X_centered.T, X_centered) / (n - 1)
 
