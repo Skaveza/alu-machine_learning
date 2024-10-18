@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module for the MultiNormal class representing a Multivariate Normal distribution.
+Module for MultiNormal class representing a Multivariate Normal distribution.
 """
 
 import numpy as np
@@ -16,7 +16,7 @@ class MultiNormal:
         Initialize the MultiNormal distribution.
 
         Parameters:
-        data (numpy.ndarray): A 2D array of shape (d, n) containing the dataset,
+        data (numpy.ndarray): A 2D array of shape (d,n) containing the dataset,
                               where d is the number of dimensions and
                               n is the number of data points.
 
@@ -43,7 +43,7 @@ class MultiNormal:
         Calculate the Probability Density Function (PDF) at a data point.
 
         Parameters:
-        x (numpy.ndarray): A 2D array of shape (d, 1) containing the data point,
+        x (numpy.ndarray): A 2D array of shape (d,1) containing the data point,
                            where d is the number of dimensions.
 
         Returns:
