@@ -5,25 +5,22 @@ Performs convolutions on grayscale images using the "valid" padding strategy.
 
 import numpy as np
 
-
 def convolve_grayscale_valid(images, kernel):
     """
-    Performs convolutions on grayscale images using "valid" padding strategy.
+    Performs convolutions on grayscale images using the "valid" padding strategy.
 
     Args:
         images (numpy.ndarray): Input grayscale images with shape (m, h, w).
         kernel (numpy.ndarray): Convolution kernel with shape (kh, kw).
 
     Returns:
-        numpy.ndarray:Convolved images with shape (m, output_h,output_w),where
+        numpy.ndarray: Convolved images with shape (m, output_h, output_w), where
                        output_h = h - kh + 1 and output_w = w - kw + 1.
     """
     m, h, w = images.shape
     kh, kw = kernel.shape
-    # Valid padding: output height = input height - kernel height + 1
-    output_h = h - kh + 1  
-    # Valid padding: output width = input width - kernel width + 1
-    output_w = w - kw + 1  
+    output_h = h - kh + 1  # Valid padding: output height = input height - kernel height + 1
+    output_w = w - kw + 1  # Valid padding: output width = input width - kernel width + 1
 
     # Pre-allocate output with correct shape
     convolved_images = np.zeros((m, output_h, output_w))
@@ -31,6 +28,8 @@ def convolve_grayscale_valid(images, kernel):
     for i in range(output_h):
         for j in range(output_w):
             # Element-wise multiplication and summation within the valid region
-            convolved_images[:, i, j] = np.sum(images[:, i:i + kh, j:j + kw] * kernel, axis=(1, 2))
+            convolved_images[:, i, j] = np.sum(
+                images[:, i:i + kh, j:j + kw] * kernel, axis=(1, 2)
+            )
 
     return convolved_images
