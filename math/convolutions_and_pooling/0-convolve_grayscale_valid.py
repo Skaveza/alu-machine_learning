@@ -20,10 +20,12 @@ def convolve_grayscale_valid(images, kernel):
     """
     m, h, w = images.shape
     kh, kw = kernel.shape
-    output_h = h - kh + 1  # Valid padding: output height = input height - kernel height + 1
-    output_w = w - kw + 1  # Valid padding: output width = input width - kernel width + 1
+    # Valid padding: output height = input height - kernel height + 1
+    output_h = h - kh + 1  
+    # Valid padding: output width = input width - kernel width + 1
+    output_w = w - kw + 1  
 
-  # Pre-allocate output with correct shape
+    # Pre-allocate output with correct shape
     convolved_images = np.zeros((m, output_h, output_w))
 
     for i in range(output_h):
