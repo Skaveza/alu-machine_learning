@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
+""" This module performs valid convolution on grayscale images"""
+
 
 def convolve_grayscale_valid(images, kernel):
     # Get dimensions of the images and the kernel

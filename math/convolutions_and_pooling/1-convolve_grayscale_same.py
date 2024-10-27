@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-""" convolution on grayscale images with custom padding"""
-
 import numpy as np
+""" This module performs convolution on grayscale images with custom padding"""
+
 
 def convolve_grayscale_padding(images, kernel, padding):
     # Get dimensions of the images and kernel
