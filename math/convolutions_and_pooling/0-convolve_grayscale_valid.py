@@ -1,6 +1,7 @@
+#!/usr/bin/env python3
 import numpy as np
 
-#!/usr/bin/env python3
+
 """
 This function performs convolutions on grayscale images using the "valid" padding strategy.
 """
