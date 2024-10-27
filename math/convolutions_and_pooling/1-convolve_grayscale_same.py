@@ -1,34 +1,37 @@
 #!/usr/bin/env python3
+"""
+this function performs same convolution on grayscale images.
+"""
+
 import numpy as np
-""" This module performs convolution on grayscale images with custom padding"""
 
 
-def convolve_grayscale_padding(images, kernel, padding):
-    # Get dimensions of the images and kernel
+def convolve_grayscale_same(images, kernel):
+    """
+    Performs same convolution on grayscale images.
+
+    Args:
+        images (numpy.ndarray): Input grayscale images with shape (m, h, w).
+        kernel (numpy.ndarray): Convolution kernel with shape (kh, kw).
+
+    Returns:
+        numpy.ndarray: Convolved images.
+    """
     m, h, w = images.shape
     kh, kw = kernel.shape
-    ph, pw = padding
+    pad_h = kh // 2
+    pad_w = kw // 2
 
-    # Calculate output dimensions
-    output_height = h + 2 * ph - kh + 1
-    output_width = w + 2 * pw - kw + 1
-    
-    # Initialize padded images
-    padded_images = np.zeros((m, h + 2 * ph, w + 2 * pw))
-    
-    # Fill in the padded images
-    padded_images[:, ph:ph + h, pw:pw + w] = images
+    padded_images = np.pad(images, ((0, 0), (pad_h, pad_h), (pad_w, pad_w)),
+                           mode='constant')
 
-    # Initialize output array for convolved images
-    convolved_images = np.zeros((m, output_height, output_width))
-    
-    # Perform convolution
-    for i in range(m):  # Loop over images
-        for y in range(output_height):  # Loop over output height
-            for x in range(output_width):  # Loop over output width
-                # Apply kernel to the current patch of the padded image
-                convolved_images[i, y, x] = np.sum(
-                    padded_images[i, y:y + kh, x:x + kw] * kernel
-                )
-    
+    output_h = h
+    output_w = w
+    convolved_images = np.zeros((m, output_h, output_w))
+
+    for i in range(output_h):
+        for j in range(output_w):
+            convolved_images[:, i, j] = np.sum(
+                padded_images[:, i:i + kh, j:j + kw] * kernel, axis=(1, 2))
+
     return convolved_images
