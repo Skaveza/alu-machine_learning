@@ -1,34 +1,37 @@
-import numpy as np
-
 #!/usr/bin/env python3
 """
-This function performs convolutions on grayscale images using the "valid" padding strategy.
+this function performs convolution on grayscale images with custom padding.
 """
 
+import numpy as np
 
 
-def convolve_grayscale_valid(images, kernel):
+def convolve_grayscale_padding(images, kernel, padding):
     """
-    Performs convolutions on grayscale images using the "valid" padding strategy.
+    Performs convolution on grayscale images with custom padding.
 
     Args:
         images (numpy.ndarray): Input grayscale images with shape (m, h, w).
         kernel (numpy.ndarray): Convolution kernel with shape (kh, kw).
+        padding (tuple): Padding for height and width of the image (ph, pw).
 
     Returns:
-        numpy.ndarray: Convolved images with shape (m, output_h, output_w), where
-                       output_h = h - kh + 1 and output_w = w - kw + 1.
+        numpy.ndarray: Convolved images.
     """
     m, h, w = images.shape
     kh, kw = kernel.shape
-    output_h = h - kh + 1  # Valid padding: output height = input height - kernel height + 1
-    output_w = w - kw + 1  # Valid padding: output width = input width - kernel width + 1
+    ph, pw = padding
 
-    convolved_images = np.zeros((m, output_h, output_w))  # Pre-allocate output with correct shape
+    padded_images = np.pad(images, ((0, 0), (ph, ph), (pw, pw)),
+                           'constant')
 
-    for i in range(output_h):
-        for j in range(output_w):
-            # Element-wise multiplication and summation within the valid region
-            convolved_images[:, i, j] = np.sum(images[:, i:i + kh, j:j + kw] * kernel, axis=(1, 2))
+    h_res = h + 2 * ph - kh + 1
+    w_res = w + 2 * pw - kw + 1
+    convolved_images = np.zeros((m, h_res, w_res))
+
+    for i in range(h_res):
+        for j in range(w_res):
+            convolved_images[:, i, j] = np.sum(
+                padded_images[:, i:i + kh, j:j + kw] * kernel, axis=(1, 2))
 
     return convolved_images
