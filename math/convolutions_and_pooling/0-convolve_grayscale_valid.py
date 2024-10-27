@@ -5,6 +5,7 @@ Performs convolutions on grayscale images using the "valid" padding strategy.
 
 import numpy as np
 
+
 def convolve_grayscale_valid(images, kernel):
     """
     Performs convolutions on grayscale images using the "valid" padding strategy.
