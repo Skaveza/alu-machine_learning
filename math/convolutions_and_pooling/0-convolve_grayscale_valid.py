@@ -9,7 +9,7 @@ Performs convolutions on grayscale images using the "valid" padding strategy.
 
 def convolve_grayscale_valid(images, kernel):
     """
-    Performs convolutions on grayscale images using the "valid" padding strategy.
+    Performs convolutions on grayscale images using "valid" padding strategy.
 
     Args:
         images (numpy.ndarray): Input grayscale images with shape (m, h, w).
