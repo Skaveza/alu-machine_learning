@@ -16,7 +16,7 @@ def convolve_grayscale_valid(images, kernel):
         kernel (numpy.ndarray): Convolution kernel with shape (kh, kw).
 
     Returns:
-        numpy.ndarray: Convolved images with shape (m, output_h, output_w), where
+        numpy.ndarray:Convolved images with shape (m, output_h,output_w),where
                        output_h = h - kh + 1 and output_w = w - kw + 1.
     """
     m, h, w = images.shape
