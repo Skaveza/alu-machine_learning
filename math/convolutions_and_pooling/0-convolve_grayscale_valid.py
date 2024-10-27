@@ -5,7 +5,7 @@ def convolve_grayscale_valid(images, kernel):
     # Get dimensions of the images and the kernel
     m, h, w = images.shape
     kh, kw = kernel.shape
-    
+ 
     # Calculate output dimensions
     output_height = h - kh + 1
     output_width = w - kw + 1
