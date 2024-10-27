@@ -3,9 +3,8 @@ import numpy as np
 
 
 """
-This function performs convolutions on grayscale images using the "valid" padding strategy.
+Performs convolutions on grayscale images using the "valid" padding strategy.
 """
-
 
 
 def convolve_grayscale_valid(images, kernel):
