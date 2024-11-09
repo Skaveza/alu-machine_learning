@@ -11,3 +11,15 @@ class PredictionRequest(BaseModel):
   BMI:float
   Smoker:int
   Sex:int
+  
+  #prediction route
+  app.post('/predict')
+  def predict (data:PredictionRequest):
+    input_data = np.array([[data.HighBP, data.BMI, data.Smoker, data.Sex]])
+    #Getting prediction
+    y_pred_continuous = model.predict(input_data)[0]
+    threshold = 0.5
+    y_pred_binary = 1 if y_pred_continuous >= threshold else 0
+    
+    return {'heart_disease_risk': y_pred_binary}
+  
