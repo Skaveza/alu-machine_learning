@@ -1,10 +1,12 @@
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import SGDRegressor
+from sklearn.linear_model import DecisionTreeRegressor
+from sklearn.linear_model import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 import joblib
 
-# Loading and filtering the dataset 
+# 
 df = pd.read_csv('./data/heart_disease_health_indicators_BRFSS2015.csv')
 df = df[['HeartDiseaseorAttack', 'HighBP', 'BMI', 'Smoker', 'Sex']]  
 # Defining X and y
