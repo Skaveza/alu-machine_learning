@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 import numpy as np
 
-"""Module defines a single neuron that performs binary classification"""
 
 class Neuron:
-    """Defines a single neuron performing binary classification"""
+    """ Module defines a single neuron performing binary classification"""
 
     def __init__(self, nx):
         """
@@ -22,7 +21,7 @@ class Neuron:
         if nx < 1:
             raise ValueError("nx must be a positive integer")
 
-        # Initialize weights using a normal distribution
+        """Initialize weights using a normal distribution"""
         self.W = np.random.randn(1, nx)
         self.b = 0  # Bias initialized to zero
         self.A = 0  # Activated output initialized to zero
