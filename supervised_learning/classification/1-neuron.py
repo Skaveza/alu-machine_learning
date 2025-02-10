@@ -1,34 +1,42 @@
 #!/usr/bin/env python3
-
 import numpy as np
 
+class Neuron:
+    """Defines a single neuron performing binary classification"""
 
-"""This module defines a single neuron performing binary classification"""
+    def __init__(self, nx):
+        """
+        Initializes the neuron.
 
-class Neuron: """Defines the single neuron"""
+        Parameters:
+        nx (int): Number of input features.
 
-def __init__(self,nx):
-  """nx represents the number of input features to a neuron"""
-  
-  if isinstance(nx,int): raise TypeError
-  """nx must be an integer"""
+        Raises:
+        TypeError: If nx is not an integer.
+        ValueError: If nx is less than 1.
+        """
+        if not isinstance(nx, int):
+            raise TypeError("nx must be an integer")
+        if nx < 1:
+            raise ValueError("nx must be a positive integer")
 
-if nx < 1: raise ValueError 
-"""nx must be positive"""
+        # Private attributes
+        self.__W = np.random.randn(1, nx)  # Weight vector
+        self.__b = 0  # Bias
+        self.__A = 0  # Activated output
 
-#Private attributes
-"""Initializing private instance attributes, each private attribute has a corresponding getter function"""
-self .__W = np.random.randn(1,nx)
-self .__b = 0
-self .__A = 0 
-
-#Getters
-"""These are the getters for the private attributes"""
-def W(self):
+    # Getters for private attributes
+    @property
+    def W(self):
+        """Getter for W"""
         return self.__W
-      
-def b(self):
+
+    @property
+    def b(self):
+        """Getter for b"""
         return self.__b
-      
-def A(self):
+
+    @property
+    def A(self):
+        """Getter for A"""
         return self.__A
