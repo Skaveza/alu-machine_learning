@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
+
 """This module defines a single Neuron that performs binary classification"""
 
 import numpy as np
+
 
 class Neuron:
     """Defines a Neuron that performs binary classification"""
@@ -66,8 +68,10 @@ class Neuron:
         Calculates the cost of the model using logistic regression.
 
         Parameters:
-        Y (numpy.ndarray): Shape (1, m) that contains correct labels for the input data.
-        A (numpy.ndarray): Shape (1, m) containing the activated output of the neuron for each example.
+        Y (numpy.ndarray) with shape (1,m).
+        Contains correct labels for the input data.
+        A (numpy.ndarray) with shape (1, m).
+        Contains the activated output of the neuron for each example.
 
         Returns:
         float: The cost of the model.
@@ -75,3 +79,31 @@ class Neuron:
         m = Y.shape[1]
         cost = -np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)) / m
         return cost
+
+    def evaluate(self, X, Y):
+        """
+        Evaluates the neuron's predictions.
+
+        Parameters:
+        X(numpy.ndarray): (nx, m), contains input data.
+        nx: the number of input features to the neuron.
+        m: the number of examples.
+
+        Y(numpy.ndarray): (1,m), contains correct labels of input data
+
+        Returns:
+        tuple: A tuple containing:
+              - numpy.ndarray, the predicted labels for each example with shape (1,m)
+              -float: cost of the model
+        """
+
+        #Perform forward propagation to calculate the activated output
+        A =self.forward_prop(X)
+ 
+        # Generate binary predictions: 1 if A >= 0.5 else 0
+        predictions = np.where(A >= 0.5, 1, 0)
+
+        # Calculate the cost using the cost function
+        cost = self.cost(Y, A)
+
+        return predictions, cost
