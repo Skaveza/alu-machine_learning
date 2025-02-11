@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
 
+
 class Neuron:
     """Defines a single neuron performing binary classification"""
 
@@ -25,7 +26,7 @@ class Neuron:
         self.__b = 0
         self.__A = 0
 
-    #Private attribute getters
+    # Private attribute Getters
     @property
     def W(self):
         """W Getter"""
