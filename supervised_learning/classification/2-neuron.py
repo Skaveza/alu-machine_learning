@@ -45,28 +45,23 @@ class Neuron:
         """A Getter"""
         return self.__A
 
-
     def forward_prop(self, X):
       """
       Calculates the forward propagation of the neuron.
-      
+ 
       Parameters:
       X (numpy.ndarray): input data with shape (nx, m).
       nx is the number of input features to the neuron.
       m is the number of examples.
-      
+ 
       Returns:
       numpy.ndarray: The activated output of the neuron:
       """
-      
-      #Compute the linear combiantion to get Z
-      Z =np.dot(self._W, X) + (self._b)
-      
-      #Apply sigmoid activation function
-      self._A = 1 /(1 + np.exp(-Z))
-      
-      return self._A
-    
-    
-    
 
+      # Compute the linear combiantion to get Z
+      Z =np.dot(self.__W, X) + (self.__b)
+
+      # Apply sigmoid activation function
+      self.__A = 1 /(1 + np.exp(-Z))
+  
+      return self.__A
