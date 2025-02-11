@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """This module defines a Neuron class for performing binary classification"""
 
-
 import numpy as np
-
 
 class Neuron:
     """Defines a single neuron performing binary classification"""
@@ -46,22 +44,21 @@ class Neuron:
         return self.__A
 
     def forward_prop(self, X):
-      """
-      Calculates the forward propagation of the neuron.
- 
-      Parameters:
-      X (numpy.ndarray): input data with shape (nx, m).
-      nx is the number of input features to the neuron.
-      m is the number of examples.
- 
-      Returns:
-      numpy.ndarray: The activated output of the neuron:
-      """
+        """
+        Calculates the forward propagation of the neuron.
 
-      # Compute the linear combiantion to get Z
-      Z =np.dot(self.__W, X) + (self.__b)
+        Parameters:
+        X (numpy.ndarray): input data with shape (nx, m).
+        nx is the number of input features to the neuron.
+        m is the number of examples.
 
-      # Apply sigmoid activation function
-      self.__A = 1 /(1 + np.exp(-Z))
-  
-      return self.__A
+        Returns:
+        numpy.ndarray: The activated output of the neuron.
+        """
+        # Compute the linear combination to get Z
+        Z = np.dot(self.__W, X) + self.__b
+
+        # Apply sigmoid activation function
+        self.__A = 1 / (1 + np.exp(-Z))
+
+        return self.__A
