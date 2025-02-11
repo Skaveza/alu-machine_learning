@@ -67,8 +67,10 @@ class Neuron:
         Calculates the cost of the model using logistic regression.
 
         Parameters:
-        Y (numpy.ndarray): Shape (1, m) that contains correct labels for the input data.
-        A (numpy.ndarray): Shape (1, m) containing the activated output of the neuron for each example.
+        Y (numpy.ndarray) with shape (1,m).
+        Contains correct labels for the input data.
+        A (numpy.ndarray) with shape (1, m).
+        Contains the activated output of the neuron for each example.
 
         Returns:
         float: The cost of the model.
