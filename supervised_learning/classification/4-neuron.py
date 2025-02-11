@@ -92,12 +92,12 @@ class Neuron:
 
         Returns:
         tuple: A tuple containing:
-              - numpy.ndarray, the predicted labels for each example with shape (1,m).
+              - numpy.ndarray, the predicted labels for each example(1,m).
               -float: cost of the model.
         """
 
         # Perform forward propagation to calculate the activated output
-        A =self.forward_prop(X)
+        A = self.forward_prop(X)
 
         # Generate binary predictions: 1 if A >= 0.5 else 0
         predictions = np.where(A >= 0.5, 1, 0)
