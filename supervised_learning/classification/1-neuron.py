@@ -21,9 +21,9 @@ class Neuron:
             raise ValueError("nx must be a positive integer")
 
         # Private attributes
-        self.__W = np.random.randn(1, nx)  # Weight vector
-        self.__b = 0  # Bias
-        self.__A = 0  # Activated output
+        self.__W = np.random.randn(1, nx)
+        self.__b = 0
+        self.__A = 0
 
     # Getters for private attributes
     @property
