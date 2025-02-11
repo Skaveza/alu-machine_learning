@@ -66,10 +66,10 @@ def cost(self, Y, A):
   Calculates the cost of the model using logistic regression
   Y(numpy.ndarray) with shape (1,m) that contains correct labels for the input data
   A(numpy.ndarray) with shape (1,m) containing the activated output of the neuron for each example
-  
+
   Returns:
   float: The cost of the model
   """
-m = Y.shape[1]
-cost = -np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)) / m
-return cost
+  m = Y.shape[1]
+  cost = -np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A)) / m
+  return cost
