@@ -9,7 +9,6 @@ import numpy as np
 class Neuron:
     """Defines a Neuron that performs binary classification"""
 
-
     def __init__(self, nx):
         """
         Initializes the neuron.
@@ -93,13 +92,13 @@ class Neuron:
 
         Returns:
         tuple: A tuple containing:
-              - numpy.ndarray, the predicted labels for each example with shape (1,m)
-              -float: cost of the model
+              - numpy.ndarray, the predicted labels for each example with shape (1,m).
+              -float: cost of the model.
         """
 
-        #Perform forward propagation to calculate the activated output
+        # Perform forward propagation to calculate the activated output
         A =self.forward_prop(X)
- 
+
         # Generate binary predictions: 1 if A >= 0.5 else 0
         predictions = np.where(A >= 0.5, 1, 0)
 
