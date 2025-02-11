@@ -25,7 +25,7 @@ class Neuron:
         self.__b = 0
         self.__A = 0
 
-    # Getters for private attributes
+    #Private attribute getters
     @property
     def W(self):
         """W Getter"""
