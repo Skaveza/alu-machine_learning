@@ -28,15 +28,15 @@ class Neuron:
     # Getters for private attributes
     @property
     def W(self):
-        """Getter for W"""
+        """W Getter"""
         return self.__W
 
     @property
     def b(self):
-        """Getter for b"""
+        """b Getter"""
         return self.__b
 
     @property
     def A(self):
-        """Getter for A"""
+        """A Getter"""
         return self.__A
