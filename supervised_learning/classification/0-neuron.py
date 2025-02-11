@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
+"""This module defines a single Neuoron performing binary classification"""
+
+
 import numpy as np
 
 
 class Neuron:
-    """ Module defines a single neuron performing binary classification"""
+    """Defines a single neuron performing binary classification"""
 
     def __init__(self, nx):
         """
