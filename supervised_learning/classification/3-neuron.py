@@ -5,6 +5,7 @@
 
 import numpy as np
 
+
 class Neuron:
     """Defines a Neuron that performs binary classification"""
 
@@ -50,8 +51,9 @@ class Neuron:
         Calculates the forward propagation of the neuron.
 
         Parameters:
-        X (numpy.ndarray): Input data with shape (nx, m), where nx is the number of input features
-                           and m is the number of examples.
+        X (numpy.ndarray): Input data with shape (nx, m).
+        nx is the number of input features.
+        m is the number of examples.
 
         Returns:
         numpy.ndarray: The activated output of the neuron.
