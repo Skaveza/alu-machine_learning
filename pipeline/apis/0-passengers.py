@@ -1,6 +1,9 @@
-#!/usr/bin/env python 3
+#!/usr/bin/env python3
 
 import requests
+
+"""This module fetches the list of starships that can hold at least 'passengerCount' passengers."""
+
 
 def availableShips(passengerCount):
     """
