@@ -13,7 +13,7 @@ def from_numpy(array):
 
     # Create DataFrame
     df = pd.DataFrame(data=array, index=index_values, columns=column_values)
-    return df  # Return the DataFrame instead of printing
+    return df
 
 # Creating a numpy array
 array = np.array([[-1, 4, 7], [2, 4, 8], [3, 9, 27],  
