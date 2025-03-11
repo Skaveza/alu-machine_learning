@@ -1,33 +1,37 @@
 #!/usr/bin/env python3
-'''
-    This module returns the location of a user
-    with a github api-url.
-'''
+"""
+Uses the GitHub API to print the location of a specific user,
+where user is passed as first argument of the script with full API URL
+
+ex) "./2-user_location.py https://api.github.com/users/holbertonschool"
+"""
+
+
 import requests
-import sys
-from datetime import datetime, timedelta
-from datetime import datetime, timedelta
+from sys import argv
+from time import time
 
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: ./2-user_location.py <API_URL>")
-        sys.exit(1)
 
-    api_url = sys.argv[1]
-
+if __name__ == "__main__":
+    if len(argv) < 2:
+        raise TypeError(
+            "Input must have the full API URL passed in as an argument: {}{}".
+            format('ex. "./2-user_location.py',
+                   'https://api.github.com/users/holbertonschool"'))
     try:
-        response = requests.get(api_url)
-        if response.status_code == 200:
-            user_data = response.json()
-            print(user_data.get('location', 'Location not specified'))
-        elif response.status_code == 403:
-            reset_time = datetime.fromtimestamp(int(response.headers.get('X-RateLimit-Reset', 0)))
-            now = datetime.now()
-            minutes_remaining = (reset_time - now).total_seconds() // 60
-            print('Reset in {} min'.format(int(minutes_remaining)))
-        elif response.status_code == 404:
-            print('Not found')
+        url = argv[1]
+        results = requests.get(url)
+        if results.status_code == 403:
+            reset = results.headers.get('X-Ratelimit-Reset')
+            waitTime = int(reset) - time()
+            minutes = round(waitTime / 60)
+            print('Reset in {} min'.format(minutes))
         else:
-            print('Error: {}'.format(response.status_code))
-    except requests.exceptions.RequestException as e:
-        print('Request failed: {}'.format(e))
+            results = results.json()
+            location = results.get('location')
+            if location:
+                print(location)
+            else:
+                print('Not found')
+    except Exception as err:
+        print('Not found')
