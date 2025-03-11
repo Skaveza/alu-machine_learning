@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-'''
+
+"""
     This module returns the location of a user
     with a GitHub API URL.
-'''
+"""
+
 
 import requests
 import sys
