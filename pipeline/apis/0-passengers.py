@@ -1,34 +1,31 @@
 #!/usr/bin/env python3
-
+"""
+    This module returns the list of ships
+    that can hold a given number of passengers
+"""
 import requests
-
-"""This module fetches the list of starships that can hold at least 'passengerCount' passengers."""
 
 
 def availableShips(passengerCount):
     """
-    Fetches the list of starships that can hold at least `passengerCount` passengers.
-
-    Args:
-        passengerCount (int): Minimum number of passengers the ship should hold.
-
-    Returns:
-        List[str]: Names of starships that meet the requirement.
+    Returns the list of ships.
     """
-    url = "https://swapi.dev/api/starships/"
+    url = "https://swapi-api.alx-tools.com/api/starships/"
     ships = []
-
-    while url:
+    while url is not None:
         response = requests.get(url)
-        if response.status_code != 200:
-            break  # Stop if there's an error
+        if response.status_code == 200:
+            data = response.json()
+            for each_ship in data["results"]:
+                passengers = each_ship['passengers'].replace(',', '')
+                if all([
+                    passengers != "n/a",
+                    passengers != "unknown",
+                    passengers != "none",
+                    passengers != "0",
+                ]):
+                    if int(passengers) >= passengerCount:
+                        ships.append(each_ship['name'])
 
-        data = response.json()
-        for ship in data['results']:
-            passengers = ship['passengers'].replace(',', '')  # Remove commas in numbers
-            if passengers.isdigit() and int(passengers) >= passengerCount:
-                ships.append(ship['name'])
-
-        url = data.get('next')  # Get next page URL for pagination
-
+        url = data["next"]
     return ships
