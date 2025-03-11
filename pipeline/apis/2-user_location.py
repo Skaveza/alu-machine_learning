@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-""" This module returns the location of a user
-    with a GitHub API URL."""
-
+'''
+    This module returns the location of a user
+    with a github api-url.
+'''
 import requests
 import sys
+from datetime import datetime, timedelta
 from datetime import datetime, timedelta
 
 if __name__ == '__main__':
@@ -14,22 +16,18 @@ if __name__ == '__main__':
     api_url = sys.argv[1]
 
     try:
-        response = requests.get(api_url, timeout=5)  # Added timeout to prevent hanging
+        response = requests.get(api_url)
         if response.status_code == 200:
             user_data = response.json()
             print(user_data.get('location', 'Location not specified'))
         elif response.status_code == 403:
-            reset_timestamp = response.headers.get('X-RateLimit-Reset')
-            if reset_timestamp:
-                reset_time = datetime.fromtimestamp(int(reset_timestamp))
-                now = datetime.now()
-                minutes_remaining = max(0, (reset_time - now).total_seconds() // 60)
-                print(f'Reset in {int(minutes_remaining)} min')
-            else:
-                print('Rate limit exceeded, but reset time unavailable.')
+            reset_time = datetime.fromtimestamp(int(response.headers.get('X-RateLimit-Reset', 0)))
+            now = datetime.now()
+            minutes_remaining = (reset_time - now).total_seconds() // 60
+            print('Reset in {} min'.format(int(minutes_remaining)))
         elif response.status_code == 404:
             print('Not found')
         else:
-            print(f'Error: {response.status_code}')
+            print('Error: {}'.format(response.status_code))
     except requests.exceptions.RequestException as e:
-        print(f'Request failed: {e}')
+        print('Request failed: {}'.format(e))
