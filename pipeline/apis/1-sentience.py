@@ -26,4 +26,3 @@ def sentientPlanets():
                     sentient_planets.append(planet['name'])
             url = data["next"]
     return sentient_planets
-  
