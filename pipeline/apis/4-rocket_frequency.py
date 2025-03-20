@@ -1,38 +1,42 @@
 #!/usr/bin/env python3
-"""
-    This module displays the number of Rocket launches.
-"""
 
+"""
+contains a function that
+uses Uonofficial SpaceX API to display
+no. of launches per rocket
+
+All launches should be taking in consideration
+Each line should contain the rocket name and the number of
+launches separated by : (colon) and space
+Order the result by the number launches (descending)
+If multiple rockets have the same amount of launches,
+order them by alphabetic order (A to Z)
+"""
 
 import requests
-from collections import Counter
 
 
-def get_launch_count_by_rocket():
-    """
-    Displays the number of Rocket launches.
-    """
+def launches_per_rocket():
+    """print no. of launches per rocket"""
     url = "https://api.spacexdata.com/v4/launches"
     response = requests.get(url)
-    launches = response.json()
-    rocket_counts = Counter(launch["rocket"] for launch in launches)
-
-    url = "https://api.spacexdata.com/v4/rockets"
-    response = requests.get(url)
-    rockets = response.json()
-    rocket_names = {rocket["id"]: rocket["name"] for rocket in rockets}
-
-    rocket_launch_counts = [
-        (
-            rocket_names[rocket_id], count
-        ) for rocket_id, count in rocket_counts.items()
-    ]
-    rocket_launch_counts.sort(key=lambda x: (-x[1], x[0]))
-
-    return rocket_launch_counts
+    data = response.json()
+    rockets = {}
+    for launch in data:
+        rocket_id = launch['rocket']
+        rocket_url = "https://api.spacexdata.com/v4/rockets/{}".format(
+            rocket_id)
+        # print(rocket_url)
+        rocket_response = requests.get(rocket_url)
+        rocket_data = rocket_response.json()
+        rocket_name = rocket_data['name']
+        if rocket_name in rockets:
+            rockets[rocket_name] += 1
+        else:
+            rockets[rocket_name] = 1
+    for rocket in sorted(rockets.items(), key=lambda x: (-x[1], x[0])):
+        print("{}: {}".format(rocket[0], rocket[1]))
 
 
 if __name__ == "__main__":
-    rocket_launch_counts = get_launch_count_by_rocket()
-    for rocket_name, count in rocket_launch_counts:
-        print("{}: {}".format(rocket_name, count))
+    launches_per_rocket()
