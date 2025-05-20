@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """
-Mmodule initializes a class that represents an RNN cell 
+Module initializes a class that represents an RNN cell
 """
 
 
 import numpy as np
 
+
 class RNNCell:
+  """Represents the RNN cell"""
+
+  
     def __init__(self, i, h, o):
         """
         Initialize the RNNCell.
