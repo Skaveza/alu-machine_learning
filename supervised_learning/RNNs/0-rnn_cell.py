@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+"""
+Mmodule initializes a class that represents an RNN cell 
+"""
+
+
 import numpy as np
-"""
-this module initializes a class that represents an RNN cell with a class constructor and forward propagation
-"""
 
 class RNNCell:
     def __init__(self, i, h, o):
@@ -41,13 +43,13 @@ class RNNCell:
         # Concatenate h_prev and x_t along last dimension
         concat = np.concatenate((h_prev, x_t), axis=1)
 
-        #Compute next hidden state using tanh activation
+        # Compute next hidden state using tanh activation
         h_next = np.tanh(np.matmul(concat, self.Wh) + self.bh)
 
-        #Compute output before activation
+        # Compute output before activation
         raw_y = np.matmul(h_next, self.Wy) + self.by
 
-        #Apply softmax activation
+        # Apply softmax activation
         y = np.exp(raw_y) / np.sum(np.exp(raw_y), axis=1, keepdims=True)
 
         return h_next, y
